@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block title %}Edit User — Slab Lab Admin{% endblock %}
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="glass-card p-4 p-md-5">
+                <h3 class="mb-4">Edit User: {{ target_user.username }}</h3>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <h5 class="mb-3">Account</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6"><label class="form-label">First Name</label>{{ user_form.first_name }}</div>
+                        <div class="col-md-6"><label class="form-label">Last Name</label>{{ user_form.last_name }}</div>
+                        <div class="col-12"><label class="form-label">Email</label>{{ user_form.email }}</div>
+                    </div>
+                    <hr class="my-4 border-secondary">
+                    <h5 class="mb-3">Role</h5>
+                    <select name="role" class="form-select mb-3">
+                        <option value="buyer" {% if target_user.profile.role == 'buyer' %}selected{% endif %}>Buyer</option>
+                        <option value="seller" {% if target_user.profile.role == 'seller' %}selected{% endif %}>Seller</option>
+                        <option value="admin" {% if target_user.profile.role == 'admin' %}selected{% endif %}>Administrator</option>
+                    </select>
+                    <hr class="my-4 border-secondary">
+                    <h5 class="mb-3">Profile</h5>
+                    {% for field in profile_form %}
+                    <div class="mb-3">
+                        <label class="form-label">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+                    {% endfor %}
+                    <div class="d-flex gap-3 mt-4">
+                        <button type="submit" class="btn btn-accent">Save Changes</button>
+                        <a href="{% url 'admin_user_list' %}" class="btn btn-outline-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

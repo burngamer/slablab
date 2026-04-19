@@ -1,0 +1,44 @@
+<!-- Card item component — used across list, home, recommendations -->
+{% load humanize %}
+<div class="col-6 col-md-4 col-lg-3">
+    <div class="card product-card glass-card h-100" id="card-{{ card.pk }}">
+        <a href="{% url 'card_detail' slug=card.slug %}" class="text-decoration-none">
+            {% if card.image %}
+            <div class="card-img-wrapper">
+                <img src="{{ card.image.url }}" class="card-img-top" alt="{{ card.title }}" loading="lazy">
+                {% if card.featured %}<span class="card-badge badge-featured">★ Featured</span>{% endif %}
+                {% if not card.is_in_stock %}<span class="card-badge badge-sold">Sold Out</span>{% endif %}
+            </div>
+            {% else %}
+            <div class="card-img-wrapper card-placeholder">
+                <i class="bi bi-image text-muted" style="font-size:3rem"></i>
+                {% if card.featured %}<span class="card-badge badge-featured">★ Featured</span>{% endif %}
+            </div>
+            {% endif %}
+        </a>
+        <div class="card-body d-flex flex-column">
+            <a href="{% url 'card_detail' slug=card.slug %}" class="text-decoration-none">
+                <h6 class="card-title-text mb-1">{{ card.title|truncatechars:45 }}</h6>
+            </a>
+            <div class="card-meta mb-2">
+                {% if card.set_name %}<span class="meta-tag"><i class="bi bi-layers"></i> {{ card.set_name|truncatechars:20 }}</span>{% endif %}
+                {% if card.grade %}<span class="meta-tag grade-tag"><i class="bi bi-award"></i> {{ card.grade_display }}</span>{% endif %}
+            </div>
+            <div class="d-flex align-items-center mb-2">
+                <div class="star-display small">
+                    {% with avg=card.average_rating %}
+                    {% for i in "12345" %}
+                        {% if forloop.counter <= avg %}<i class="bi bi-star-fill text-warning"></i>
+                        {% else %}<i class="bi bi-star text-muted"></i>{% endif %}
+                    {% endfor %}
+                    {% endwith %}
+                </div>
+                <small class="text-muted ms-1">({{ card.review_count }})</small>
+            </div>
+            <div class="mt-auto d-flex justify-content-between align-items-center">
+                <span class="price-tag">${{ card.price|intcomma }}</span>
+                <span class="rarity-badge rarity-{{ card.rarity }}">{{ card.get_rarity_display }}</span>
+            </div>
+        </div>
+    </div>
+</div>

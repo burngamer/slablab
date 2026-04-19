@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}My Profile — Slab Lab{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row g-4">
+        <!-- Profile Card -->
+        <div class="col-md-4">
+            <div class="glass-card p-4 text-center">
+                {% if profile.avatar %}
+                <img src="{{ profile.avatar.url }}" alt="Avatar" class="rounded-circle mb-3" style="width:120px;height:120px;object-fit:cover">
+                {% else %}
+                <div class="avatar-placeholder mb-3"><i class="bi bi-person-fill"></i></div>
+                {% endif %}
+                <h4>{{ user.first_name }} {{ user.last_name }}</h4>
+                <span class="badge bg-accent mb-2">{{ profile.get_role_display }}</span>
+                {% if profile.bio %}<p class="text-muted small mt-2">{{ profile.bio }}</p>{% endif %}
+                <a href="{% url 'profile_edit' %}" class="btn btn-outline-accent btn-sm mt-3 w-100">
+                    <i class="bi bi-pencil me-1"></i>Edit Profile
+                </a>
+            </div>
+        </div>
+
+        <!-- Details -->
+        <div class="col-md-8">
+            <div class="glass-card p-4">
+                <h5 class="mb-4"><i class="bi bi-info-circle me-2"></i>Profile Information</h5>
+                <div class="row g-3">
+                    <div class="col-sm-6">
+                        <label class="form-label text-muted small">Username</label>
+                        <p>{{ user.username }}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label text-muted small">Email</label>
+                        <p>{{ user.email }}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label text-muted small">Phone</label>
+                        <p>{{ profile.phone|default:"Not provided" }}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label text-muted small">Date of Birth</label>
+                        <p>{{ profile.date_of_birth|default:"Not provided" }}</p>
+                    </div>
+                    <div class="col-12">
+                        <label class="form-label text-muted small">Address</label>
+                        <p>{{ profile.full_address|default:"Not provided" }}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label text-muted small">Member Since</label>
+                        <p>{{ user.date_joined|date:"F j, Y" }}</p>
+                    </div>
+                    <div class="col-sm-6">
+                        <label class="form-label text-muted small">Profile Visibility</label>
+                        <p>{% if profile.is_public %}<i class="bi bi-globe text-success"></i> Public{% else %}<i class="bi bi-lock text-warning"></i> Private{% endif %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

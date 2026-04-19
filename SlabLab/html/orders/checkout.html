@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+{% load humanize %}
+
+{% block title %}Checkout — Slab Lab{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <h2 class="mb-4"><i class="bi bi-lock me-2"></i>Checkout</h2>
+
+    <div class="row g-4">
+        <!-- Shipping Form -->
+        <div class="col-lg-7">
+            <div class="glass-card p-4">
+                <h5 class="mb-3"><i class="bi bi-truck me-2"></i>Shipping Information</h5>
+                <form method="POST" id="checkoutForm">
+                    {% csrf_token %}
+                    {% if form.errors %}
+                    <div class="alert alert-danger glass-alert">
+                        {% for field, errors in form.errors.items %}
+                            {% for error in errors %}<div>{{ error }}</div>{% endfor %}
+                        {% endfor %}
+                    </div>
+                    {% endif %}
+
+                    <div class="mb-3">
+                        <label class="form-label">Full Name</label>
+                        {{ form.shipping_name }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Address</label>
+                        {{ form.shipping_address }}
+                    </div>
+                    <div class="row g-3">
+                        <div class="col-md-4">
+                            <label class="form-label">City</label>
+                            {{ form.shipping_city }}
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">State</label>
+                            {{ form.shipping_state }}
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">ZIP Code</label>
+                            {{ form.shipping_zip }}
+                        </div>
+                    </div>
+                    <div class="mb-3 mt-3">
+                        <label class="form-label">Country</label>
+                        {{ form.shipping_country }}
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Order Notes</label>
+                        {{ form.notes }}
+                    </div>
+
+                    <button type="submit" class="btn btn-accent btn-lg w-100 mt-3">
+                        <i class="bi bi-bag-check me-2"></i>Place Order — ${{ cart.total_price|intcomma }}
+                    </button>
+                </form>
+            </div>
+        </div>
+
+        <!-- Order Review -->
+        <div class="col-lg-5">
+            <div class="glass-card p-4">
+                <h5 class="mb-3"><i class="bi bi-receipt me-2"></i>Order Review</h5>
+                {% for item in items %}
+                <div class="d-flex gap-3 py-2 {% if not forloop.last %}border-bottom border-secondary{% endif %}">
+                    <div style="width:50px;flex-shrink:0">
+                        {% if item.card.image %}
+                        <img src="{{ item.card.image.url }}" alt="{{ item.card.title }}" class="img-fluid rounded">
+                        {% else %}
+                        <div class="bg-dark rounded p-2 text-center"><i class="bi bi-image text-muted"></i></div>
+                        {% endif %}
+                    </div>
+                    <div class="flex-grow-1">
+                        <small class="d-block">{{ item.card.title|truncatechars:35 }}</small>
+                        <small class="text-muted">Qty: {{ item.quantity }}</small>
+                    </div>
+                    <div class="text-end">
+                        <small class="fw-bold">${{ item.subtotal|intcomma }}</small>
+                    </div>
+                </div>
+                {% endfor %}
+                <hr class="border-secondary">
+                <div class="d-flex justify-content-between">
+                    <span class="text-muted">Subtotal</span>
+                    <span>${{ cart.total_price|intcomma }}</span>
+                </div>
+                <div class="d-flex justify-content-between">
+                    <span class="text-muted">Shipping</span>
+                    <span class="text-success">Free</span>
+                </div>
+                <hr class="border-secondary">
+                <div class="d-flex justify-content-between">
+                    <strong>Total</strong>
+                    <strong class="text-accent fs-5">${{ cart.total_price|intcomma }}</strong>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

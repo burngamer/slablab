@@ -1,0 +1,96 @@
+{% extends 'base.html' %}
+
+{% block title %}Edit Profile — Slab Lab{% endblock %}
+
+{% block content %}
+<div class="container py-5">
+    <div class="row justify-content-center">
+        <div class="col-md-8">
+            <div class="glass-card p-4 p-md-5">
+                <h3 class="mb-4"><i class="bi bi-pencil-square me-2"></i>Edit Profile</h3>
+
+                <form method="POST" enctype="multipart/form-data" id="profileEditForm">
+                    {% csrf_token %}
+
+                    <h5 class="mb-3 mt-2">Account Details</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">First Name</label>
+                            {{ user_form.first_name }}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Last Name</label>
+                            {{ user_form.last_name }}
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Email</label>
+                            {{ user_form.email }}
+                        </div>
+                    </div>
+
+                    <hr class="my-4 border-secondary">
+                    <h5 class="mb-3">Profile Details</h5>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label">Avatar</label>
+                            {{ profile_form.avatar }}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Phone</label>
+                            {{ profile_form.phone }}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Date of Birth</label>
+                            {{ profile_form.date_of_birth }}
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Bio</label>
+                            {{ profile_form.bio }}
+                        </div>
+                    </div>
+
+                    <hr class="my-4 border-secondary">
+                    <h5 class="mb-3">Address</h5>
+                    <div class="row g-3">
+                        <div class="col-12">
+                            <label class="form-label">Address Line 1</label>
+                            {{ profile_form.address_line1 }}
+                        </div>
+                        <div class="col-12">
+                            <label class="form-label">Address Line 2</label>
+                            {{ profile_form.address_line2 }}
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">City</label>
+                            {{ profile_form.city }}
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">State</label>
+                            {{ profile_form.state }}
+                        </div>
+                        <div class="col-md-4">
+                            <label class="form-label">ZIP Code</label>
+                            {{ profile_form.zip_code }}
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label">Country</label>
+                            {{ profile_form.country }}
+                        </div>
+                        <div class="col-md-6 d-flex align-items-end">
+                            <div class="form-check">
+                                {{ profile_form.is_public }}
+                                <label class="form-check-label ms-2">Make profile public</label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="d-flex gap-3 mt-4">
+                        <button type="submit" class="btn btn-accent"><i class="bi bi-check-lg me-1"></i>Save Changes</button>
+                        <a href="{% url 'profile' %}" class="btn btn-outline-secondary">Cancel</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

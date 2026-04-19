@@ -1,0 +1,133 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block title %}Slab Lab — Graded Card Marketplace{% endblock %}
+
+{% block content %}
+<!-- ══════════════════ HERO ══════════════════ -->
+<section class="hero-section">
+    <div class="container text-center">
+        <h1 class="hero-title">
+            Discover Graded<br>
+            <span class="gradient-text">Collectible Cards</span>
+        </h1>
+        <p class="hero-subtitle">Buy, sell, and explore PSA, BGS & CGC slabs from trusted collectors worldwide.</p>
+        <div class="d-flex justify-content-center gap-3 mt-4">
+            <a href="{% url 'card_list' %}" class="btn btn-accent btn-lg px-4">
+                <i class="bi bi-search me-2"></i>Browse Cards
+            </a>
+            {% if not user.is_authenticated %}
+            <a href="{% url 'register' %}" class="btn btn-outline-light btn-lg px-4">
+                <i class="bi bi-person-plus me-2"></i>Join Free
+            </a>
+            {% endif %}
+        </div>
+
+        <!-- Stats -->
+        <div class="row g-4 mt-5 justify-content-center">
+            <div class="col-6 col-md-3">
+                <div class="stat-card glass-card">
+                    <div class="stat-number">{{ latest_cards|length }}+</div>
+                    <div class="stat-label">Cards Listed</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card glass-card">
+                    <div class="stat-number">{{ categories|length }}</div>
+                    <div class="stat-label">Categories</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card glass-card">
+                    <div class="stat-number">PSA</div>
+                    <div class="stat-label">BGS · CGC · SGC</div>
+                </div>
+            </div>
+            <div class="col-6 col-md-3">
+                <div class="stat-card glass-card">
+                    <div class="stat-number">24/7</div>
+                    <div class="stat-label">Marketplace</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ══════════════════ FEATURED CARDS ══════════════════ -->
+{% if featured_cards %}
+<section class="py-5">
+    <div class="container">
+        <div class="section-header">
+            <h2><i class="bi bi-star-fill text-warning me-2"></i>Featured Slabs</h2>
+            <a href="{% url 'card_list' %}" class="btn btn-outline-accent btn-sm">View All</a>
+        </div>
+        <div class="row g-4">
+            {% for card in featured_cards %}
+            {% include 'components/card_item.html' with card=card %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ══════════════════ CATEGORIES ══════════════════ -->
+{% if categories %}
+<section class="py-5 section-alt">
+    <div class="container">
+        <div class="section-header">
+            <h2><i class="bi bi-collection me-2"></i>Shop by Category</h2>
+            <a href="{% url 'category_list' %}" class="btn btn-outline-accent btn-sm">All Categories</a>
+        </div>
+        <div class="row g-4">
+            {% for cat in categories %}
+            <div class="col-6 col-md-4 col-lg-3">
+                <a href="{% url 'category_detail' slug=cat.slug %}" class="text-decoration-none">
+                    <div class="category-card glass-card text-center p-4">
+                        {% if cat.image %}
+                        <img src="{{ cat.image.url }}" alt="{{ cat.name }}" class="category-img mb-3">
+                        {% else %}
+                        <div class="category-icon mb-3"><i class="bi bi-folder2-open"></i></div>
+                        {% endif %}
+                        <h5 class="mb-1">{{ cat.name }}</h5>
+                        {% if cat.children.count %}
+                        <small class="text-muted">{{ cat.children.count }} subcategories</small>
+                        {% endif %}
+                    </div>
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ══════════════════ LATEST LISTINGS ══════════════════ -->
+{% if latest_cards %}
+<section class="py-5">
+    <div class="container">
+        <div class="section-header">
+            <h2><i class="bi bi-clock-history me-2"></i>Latest Listings</h2>
+            <a href="{% url 'card_list' %}" class="btn btn-outline-accent btn-sm">View All</a>
+        </div>
+        <div class="row g-4">
+            {% for card in latest_cards %}
+            {% include 'components/card_item.html' with card=card %}
+            {% endfor %}
+        </div>
+    </div>
+</section>
+{% endif %}
+
+<!-- ══════════════════ CTA ══════════════════ -->
+{% if not user.is_authenticated %}
+<section class="py-5 section-alt">
+    <div class="container text-center">
+        <div class="cta-card glass-card p-5">
+            <h2 class="mb-3">Ready to Start Collecting?</h2>
+            <p class="text-muted mb-4">Join thousands of collectors buying and selling graded cards on Slab Lab.</p>
+            <a href="{% url 'register' %}" class="btn btn-accent btn-lg px-5">Create Free Account</a>
+        </div>
+    </div>
+</section>
+{% endif %}
+{% endblock %}
