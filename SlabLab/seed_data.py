@@ -73,12 +73,25 @@ for card_data in cards_data:
     category = Category.objects.get(slug=cat_slug)
     card_data['category'] = category
     card_data['seller'] = admin
+    
+    # Set the image path based on the card title
+    image_filename = f"{card_data['title']}.jpg"
+    image_path = os.path.join('media', 'cards', image_filename)
+    if os.path.exists(image_path):
+        card_data['image'] = f"cards/{image_filename}"
 
     if not Card.objects.filter(title=card_data['title']).exists():
         card = Card(**card_data)
         card.save()
         print(f"  ✓ {card.title} — ${card.price}")
     else:
-        print(f"  ○ {card_data['title']} (exists)")
+        # If the card already exists, let's also make sure the image is linked
+        card = Card.objects.get(title=card_data['title'])
+        if 'image' in card_data and not card.image:
+            card.image.name = card_data['image']
+            card.save()
+            print(f"  ○ {card_data['title']} (exists - updated image)")
+        else:
+            print(f"  ○ {card_data['title']} (exists)")
 
 print(f"\nDone! {Card.objects.count()} cards, {Category.objects.count()} categories in database.")
