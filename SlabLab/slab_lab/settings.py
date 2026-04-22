@@ -3,6 +3,7 @@ Django settings for Slab Lab project.
 """
 import os
 from pathlib import Path
+import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -32,6 +33,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
@@ -63,7 +65,7 @@ TEMPLATES = [
 WSGI_APPLICATION = 'slab_lab.wsgi.application'
 
 # ---------------------------------------------------------------------------
-# Database — SQLite for development
+# Database — SQLite for development, PostgreSQL for Production
 # ---------------------------------------------------------------------------
 DATABASES = {
     'default': {
@@ -71,6 +73,13 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+# Override database settings if DATABASE_URL environment variable is set (Render)
+if 'DATABASE_URL' in os.environ:
+    DATABASES['default'] = dj_database_url.config(
+        conn_max_age=600,
+        conn_health_checks=True,
+    )
 
 # ---------------------------------------------------------------------------
 # Password validation
