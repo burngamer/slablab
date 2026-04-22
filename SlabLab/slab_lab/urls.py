@@ -4,6 +4,7 @@ Slab Lab — Main URL configuration.
 from django.conf import settings
 from django.conf.urls.static import static
 from django.urls import path, include
+from django.contrib import admin
 
 from apps.catalogue.views import home_view
 
@@ -37,8 +38,11 @@ admin_patterns = [
 ]
 
 urlpatterns = [
-    # Custom admin panel at /admin/
-    path('admin/', include(admin_patterns)),
+    # Default Django admin
+    path('admin/', admin.site.urls),
+
+    # Custom admin panel at /admin-dashboard/
+    path('admin-dashboard/', include(admin_patterns)),
 
     # App routes
     path('', home_view, name='home'),

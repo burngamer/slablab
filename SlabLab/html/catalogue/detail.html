@@ -31,7 +31,7 @@
                 {% endif %}
                 {% if card.image_back %}
                 <div class="mt-3 text-center">
-                    <img src="{{ card.image_back.url }}" alt="Back" class="img-fluid rounded" style="max-height:150px;cursor:pointer" onclick="document.getElementById('mainCardImage').src=this.src">
+                    <img src="{{ card.image_back.url }}" alt="Back" class="img-fluid rounded" style="max-height:150px;cursor:pointer" onclick="document.querySelector('#mainCardImage').src=this.src">
                     <small class="d-block text-muted mt-1">Click to view back</small>
                 </div>
                 {% endif %}
