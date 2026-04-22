@@ -1,0 +1,17 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   PAGE — Category List & Category Detail
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Subcategory Pills ──────────────────────────────────────────────────────── */
+.subcategory-pills .btn {
+    transition: var(--transition);
+}
+
+.subcategory-pills .btn:hover {
+    transform: translateY(-1px);
+}
+
+/* ── Sort Select ────────────────────────────────────────────────────────────── */
+.category-sort {
+    min-width: 130px;
+}

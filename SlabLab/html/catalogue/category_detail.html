@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}{{ category.name }} — Slab Lab{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/pages/categories.css' %}">{% endblock %}
 
 {% block content %}
 <div class="container py-5">

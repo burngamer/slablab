@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
-{% load humanize %}
+{% load static humanize %}
 
 {% block title %}Browse Cards — Slab Lab{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/pages/card-list.css' %}">{% endblock %}
 
 {% block content %}
 <div class="container py-5">

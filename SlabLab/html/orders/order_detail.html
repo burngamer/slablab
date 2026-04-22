@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
-{% load humanize %}
+{% load static humanize %}
 
 {% block title %}Order #{{ order.pk }} — Slab Lab{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/pages/orders.css' %}">{% endblock %}
 
 {% block content %}
 <div class="container py-5">

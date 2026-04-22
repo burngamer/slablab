@@ -1,0 +1,32 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   PAGE — Shopping Cart
+   Cart item rows, summary card
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Cart Item Row ──────────────────────────────────────────────────────────── */
+.cart-item {
+    transition: var(--transition);
+}
+
+.cart-item:hover {
+    background: var(--bg-card-hover);
+    border-radius: var(--radius-sm);
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+/* ── Quantity Select ────────────────────────────────────────────────────────── */
+.cart-item .form-select {
+    min-width: 65px;
+}
+
+/* ── Summary total ──────────────────────────────────────────────────────────── */
+.cart-total {
+    font-family: 'Outfit', sans-serif;
+    letter-spacing: -0.5px;
+}
+
+/* ── Empty cart ──────────────────────────────────────────────────────────────── */
+.empty-cart i {
+    opacity: 0.3;
+}

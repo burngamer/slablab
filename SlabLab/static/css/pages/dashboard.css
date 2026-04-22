@@ -1,0 +1,30 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   PAGE — User Dashboard
+   Mini cards, dashboard layout
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Mini Cards (recently viewed / wishlist preview) ────────────────────────── */
+.mini-card {
+    transition: var(--transition);
+}
+
+.mini-card:hover {
+    transform: translateY(-3px);
+}
+
+.mini-card img {
+    transition: transform 0.3s ease;
+}
+
+.mini-card:hover img {
+    transform: scale(1.05);
+}
+
+/* ── Dashboard panels entrance ──────────────────────────────────────────────── */
+.dashboard-panel {
+    animation: fadeInUp 0.4s ease both;
+}
+
+.dashboard-panel:nth-child(2) { animation-delay: 0.1s; }
+.dashboard-panel:nth-child(3) { animation-delay: 0.15s; }
+.dashboard-panel:nth-child(4) { animation-delay: 0.2s; }

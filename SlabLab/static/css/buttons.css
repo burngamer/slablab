@@ -1,0 +1,32 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   SLAB LAB — Buttons
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+.btn-accent {
+    background: var(--gradient-1);
+    color: white;
+    border: none;
+    border-radius: var(--radius-sm);
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-accent:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 8px 25px var(--accent-glow);
+    color: white;
+}
+
+.btn-outline-accent {
+    color: var(--accent);
+    border: 1px solid var(--accent);
+    border-radius: var(--radius-sm);
+    font-weight: 500;
+    background: transparent;
+}
+
+.btn-outline-accent:hover {
+    background: var(--accent);
+    color: white;
+    border-color: var(--accent);
+}

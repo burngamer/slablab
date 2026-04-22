@@ -1,0 +1,88 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   SLAB LAB — Navbar
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+.glass-nav {
+    background: rgba(10, 10, 26, 0.85) !important;
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border-bottom: 1px solid var(--glass-border);
+    padding: 0.6rem 0;
+    z-index: 1050;
+}
+
+[data-bs-theme="light"] .glass-nav {
+    background: rgba(240, 240, 248, 0.85) !important;
+}
+
+/* ── Brand ──────────────────────────────────────────────────────────────────── */
+.brand-glow {
+    font-family: 'Outfit', sans-serif;
+    font-weight: 800;
+    font-size: 1.4rem;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+/* ── Nav Links ──────────────────────────────────────────────────────────────── */
+.navbar-nav .nav-link {
+    color: var(--text-muted);
+    font-weight: 500;
+    font-size: 0.9rem;
+    transition: var(--transition);
+}
+
+.navbar-nav .nav-link:hover { color: var(--accent); }
+
+/* ── Search Input ───────────────────────────────────────────────────────────── */
+.search-input {
+    background: var(--glass-bg) !important;
+    border: 1px solid var(--glass-border) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm) !important;
+}
+
+.search-input::placeholder { color: var(--text-muted); }
+
+.search-input:focus {
+    box-shadow: 0 0 0 2px var(--accent-glow) !important;
+    border-color: var(--accent) !important;
+}
+
+/* ── Badge Count ────────────────────────────────────────────────────────────── */
+.badge-count {
+    position: absolute;
+    top: 0;
+    right: -4px;
+    background: var(--accent);
+    color: white;
+    font-size: 0.65rem;
+    padding: 2px 5px;
+    border-radius: 20px;
+    min-width: 16px;
+    text-align: center;
+}
+
+/* ── Dropdown ───────────────────────────────────────────────────────────────── */
+.glass-dropdown {
+    background: rgba(18, 18, 42, 0.95) !important;
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border) !important;
+    border-radius: var(--radius-sm) !important;
+}
+
+[data-bs-theme="light"] .glass-dropdown {
+    background: rgba(255, 255, 255, 0.95) !important;
+}
+
+.glass-dropdown .dropdown-item {
+    color: var(--text-primary);
+    transition: var(--transition);
+}
+
+.glass-dropdown .dropdown-item:hover {
+    background: var(--accent-glow);
+    color: white;
+}

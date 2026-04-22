@@ -1,0 +1,41 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   SLAB LAB — Stats & Section Helpers
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Stat Cards ─────────────────────────────────────────────────────────────── */
+.stat-card { padding: 1.5rem; }
+
+.stat-number {
+    font-family: 'Outfit', sans-serif;
+    font-size: 1.8rem;
+    font-weight: 800;
+    background: var(--gradient-1);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+}
+
+.stat-label {
+    color: var(--text-muted);
+    font-size: 0.85rem;
+    font-weight: 500;
+}
+
+/* ── Section Helpers ────────────────────────────────────────────────────────── */
+.section-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+.section-alt {
+    background: var(--bg-card);
+    border-top: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--glass-border);
+}
+
+/* ── Responsive ─────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .stat-number { font-size: 1.4rem; }
+}

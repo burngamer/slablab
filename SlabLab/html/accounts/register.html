@@ -1,6 +1,9 @@
 {% extends 'base.html' %}
+{% load static %}
 
 {% block title %}Sign Up — Slab Lab{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/pages/auth.css' %}">{% endblock %}
 
 {% block content %}
 <div class="container py-5">

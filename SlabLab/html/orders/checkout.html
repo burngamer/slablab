@@ -1,7 +1,9 @@
 {% extends 'base.html' %}
-{% load humanize %}
+{% load static humanize %}
 
 {% block title %}Checkout — Slab Lab{% endblock %}
+
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/pages/checkout.css' %}">{% endblock %}
 
 {% block content %}
 <div class="container py-5">

@@ -1,0 +1,28 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   PAGE — Order History & Order Detail
+   Order table, status badges, shipping card
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Order table rows ───────────────────────────────────────────────────────── */
+.order-row {
+    transition: var(--transition);
+}
+
+.order-row:hover td {
+    color: var(--text-primary);
+}
+
+/* ── Status badge pulse for pending ─────────────────────────────────────────── */
+.badge-pending {
+    animation: pendingPulse 2s ease-in-out infinite;
+}
+
+@keyframes pendingPulse {
+    0%, 100% { opacity: 1; }
+    50%      { opacity: 0.7; }
+}
+
+/* ── Shipping address card ──────────────────────────────────────────────────── */
+.shipping-address {
+    line-height: 1.7;
+}

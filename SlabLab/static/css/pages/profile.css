@@ -1,0 +1,33 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   PAGE — Profile, Public Profile & Profile Edit
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+.profile-avatar-img {
+    width: 120px;
+    height: 120px;
+    object-fit: cover;
+    border: 3px solid var(--glass-border);
+    transition: var(--transition);
+}
+
+.profile-avatar-img:hover {
+    border-color: var(--accent);
+    box-shadow: 0 0 20px var(--accent-glow);
+}
+
+.profile-info-row {
+    padding: 0.5rem 0;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.profile-info-row:last-child {
+    border-bottom: none;
+}
+
+.profile-section-card {
+    animation: fadeInUp 0.4s ease both;
+}
+
+.profile-section-card:nth-child(2) {
+    animation-delay: 0.1s;
+}

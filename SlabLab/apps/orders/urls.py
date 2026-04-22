@@ -15,7 +15,5 @@ urlpatterns = [
     path('orders/', views.order_history_view, name='order_history'),
     path('orders/<int:order_id>/', views.order_detail_view, name='order_detail'),
 
-    # Admin — Order management
-    path('manage/orders/', views.admin_order_list_view, name='admin_order_list'),
-    path('manage/orders/<int:order_id>/', views.admin_order_detail_view, name='admin_order_detail'),
+
 ]

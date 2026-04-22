@@ -1,0 +1,43 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   SLAB LAB — Forms, Filters & Cart
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Form Controls ──────────────────────────────────────────────────────────── */
+.form-control,
+.form-select {
+    background: var(--glass-bg) !important;
+    border: 1px solid var(--glass-border) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-sm);
+    transition: var(--transition);
+}
+
+.form-control:focus,
+.form-select:focus {
+    box-shadow: 0 0 0 2px var(--accent-glow) !important;
+    border-color: var(--accent) !important;
+}
+
+.form-label {
+    font-size: 0.85rem;
+    font-weight: 500;
+    color: var(--text-muted);
+}
+
+
+
+/* ── Breadcrumb ─────────────────────────────────────────────────────────────── */
+.breadcrumb {
+    background: transparent;
+    padding: 0;
+}
+
+.breadcrumb-item + .breadcrumb-item::before {
+    color: var(--text-muted);
+}
+
+.breadcrumb-item.active {
+    color: var(--text-muted);
+}
+
+

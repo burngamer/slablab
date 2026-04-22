@@ -1,0 +1,52 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   PAGE — Admin Panel (all admin pages)
+   Dashboard quick-links, table tweaks, status form
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Admin quick-link cards ─────────────────────────────────────────────────── */
+.admin-link-card {
+    transition: var(--transition);
+}
+
+.admin-link-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent) !important;
+    box-shadow: 0 8px 30px var(--accent-glow);
+}
+
+.admin-link-card i.display-6 {
+    transition: var(--transition);
+}
+
+.admin-link-card:hover i.display-6 {
+    transform: scale(1.15);
+}
+
+/* ── Admin table thumbnail ──────────────────────────────────────────────────── */
+.admin-thumb {
+    width: 40px;
+    height: 40px;
+    object-fit: cover;
+    border-radius: 4px;
+}
+
+/* ── Status update form ─────────────────────────────────────────────────────── */
+.status-form {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+/* ── Admin order total ──────────────────────────────────────────────────────── */
+.admin-total-box {
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-sm);
+    padding: 0.75rem 1.25rem;
+    background: var(--bg-card);
+}
+
+/* ── Confirm delete warning ─────────────────────────────────────────────────── */
+.delete-warning {
+    border-left: 4px solid #e74c3c;
+    padding-left: 1rem;
+}

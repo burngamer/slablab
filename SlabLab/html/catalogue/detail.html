@@ -3,7 +3,7 @@
 
 {% block title %}{{ card.title }} — Slab Lab{% endblock %}
 
-{% block extra_css %}<link rel="stylesheet" href="{% static 'css/styles.css' %}">{% endblock %}
+{% block extra_css %}<link rel="stylesheet" href="{% static 'css/pages/card-detail.css' %}">{% endblock %}
 
 {% block content %}
 <div class="container py-5">
@@ -218,6 +218,6 @@
 {% endblock %}
 
 {% block extra_js %}
-<script src="{% static 'js/ajax_ratings.js' %}"></script>
-<script src="{% static 'js/cart_logic.js' %}"></script>
+<script src="{% static 'js/ajax_ratings.js' %}" defer></script>
+<script src="{% static 'js/cart_logic.js' %}" defer></script>
 {% endblock %}

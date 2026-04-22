@@ -1,0 +1,14 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   PAGE — Recommendations
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Empty recommendations ──────────────────────────────────────────────────── */
+.empty-recommendations i {
+    opacity: 0.3;
+    animation: sparkle 3s ease-in-out infinite;
+}
+
+@keyframes sparkle {
+    0%, 100% { transform: scale(1) rotate(0deg); opacity: 0.3; }
+    50%      { transform: scale(1.1) rotate(10deg); opacity: 0.5; }
+}

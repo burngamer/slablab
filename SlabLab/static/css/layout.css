@@ -1,0 +1,146 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   SLAB LAB — Layout, Glass Components & Shared UI
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Glassmorphism Cards ────────────────────────────────────────────────────── */
+.glass-card {
+    background: var(--glass-bg);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius);
+    transition: var(--transition);
+}
+
+.glass-card:hover {
+    background: var(--bg-card-hover);
+    border-color: rgba(108, 92, 231, 0.2);
+    box-shadow: var(--shadow-glow);
+    transform: translateY(-2px);
+}
+
+.glass-alert {
+    background: var(--glass-bg) !important;
+    backdrop-filter: blur(10px);
+    border: 1px solid var(--glass-border) !important;
+    border-radius: var(--radius-sm) !important;
+}
+
+
+
+/* ── Star Ratings ───────────────────────────────────────────────────────────── */
+.star-display i { font-size: 0.85rem; }
+
+.star-rating-input {
+    display: flex;
+    flex-direction: row-reverse;
+    gap: 4px;
+    justify-content: flex-end;
+}
+
+.star-clickable {
+    font-size: 1.5rem;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: var(--transition);
+}
+
+.star-clickable:hover,
+.star-clickable.active {
+    color: #f1c40f;
+}
+
+.star-clickable:hover ~ .star-clickable {
+    color: #f1c40f;
+}
+
+/* ── Avatar ─────────────────────────────────────────────────────────────────── */
+.avatar-placeholder {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    background: var(--glass-bg);
+    border: 2px solid var(--glass-border);
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 3rem;
+    color: var(--text-muted);
+}
+
+/* ── Tables ─────────────────────────────────────────────────────────────────── */
+.table-dark {
+    --bs-table-bg: transparent;
+    --bs-table-hover-bg: var(--bg-card-hover);
+}
+
+/* ── Pagination ─────────────────────────────────────────────────────────────── */
+.page-link {
+    background: var(--glass-bg);
+    border-color: var(--glass-border);
+    color: var(--text-primary);
+}
+
+.page-link:hover {
+    background: var(--accent);
+    border-color: var(--accent);
+    color: white;
+}
+
+.page-item.active .page-link {
+    background: var(--accent);
+    border-color: var(--accent);
+}
+
+/* ── Footer ─────────────────────────────────────────────────────────────────── */
+.site-footer {
+    background: rgba(0, 0, 0, 0.3);
+    border-top: 1px solid var(--glass-border);
+}
+
+.footer-heading {
+    color: var(--text-primary);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 0.75rem;
+}
+
+.footer-links li { margin-bottom: 0.4rem; }
+
+.footer-links a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-size: 0.85rem;
+    transition: var(--transition);
+}
+
+.footer-links a:hover { color: var(--accent); }
+
+.footer-social {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+    text-decoration: none;
+    transition: var(--transition);
+}
+
+.footer-social:hover {
+    color: var(--accent);
+    transform: translateY(-2px);
+}
+
+/* ── Entrance Animations ────────────────────────────────────────────────────── */
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(20px); }
+    to   { opacity: 1; transform: translateY(0); }
+}
+
+.product-card,
+.category-card,
+.stat-card {
+    animation: fadeInUp 0.5s ease both;
+}
+
+.row .col-6:nth-child(1) .product-card { animation-delay: 0.05s; }
+.row .col-6:nth-child(2) .product-card { animation-delay: 0.1s;  }
+.row .col-6:nth-child(3) .product-card { animation-delay: 0.15s; }
+.row .col-6:nth-child(4) .product-card { animation-delay: 0.2s;  }

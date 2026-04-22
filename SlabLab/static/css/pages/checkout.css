@@ -1,0 +1,37 @@
+/* ══════════════════════════════════════════════════════════════════════════════
+   PAGE — Checkout
+   Shipping form, order review sidebar
+   ══════════════════════════════════════════════════════════════════════════════ */
+
+/* ── Checkout form sections ─────────────────────────────────────────────────── */
+.checkout-form h5 {
+    padding-bottom: 0.5rem;
+    border-bottom: 1px solid var(--glass-border);
+}
+
+/* ── Order review items ─────────────────────────────────────────────────────── */
+.checkout-review-item {
+    transition: var(--transition);
+}
+
+.checkout-review-item img {
+    border-radius: 6px;
+}
+
+/* ── Place order CTA ────────────────────────────────────────────────────────── */
+.checkout-submit {
+    position: relative;
+    overflow: hidden;
+}
+
+.checkout-submit::after {
+    content: '';
+    position: absolute;
+    top: 0; left: -100%; right: 0; bottom: 0;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s ease;
+}
+
+.checkout-submit:hover::after {
+    left: 100%;
+}
